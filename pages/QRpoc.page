@@ -1,0 +1,229 @@
+<apex:page controller="AccountRemoter" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/grid.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/version.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/detector.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/formatinf.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/errorlevel.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/bitmat.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/datablock.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/bmparser.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/datamask.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/rsdecoder.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/gf256poly.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/gf256.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/decoder.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/qrcode.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/findpat.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/alignpat.js')}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.JsQrCode, 'jsqrcode-master/src/databr.js')}"></script>
+  
+  <!--<c:foundationHeader />-->
+  
+  <style>
+  body{
+    background-color:#fff;
+    height:100%;
+  }
+    input[type="file"] {
+      display:none;
+    }
+    
+    .itemwrap {
+      position:relative;
+    }
+    .submit {
+      position:relative;
+      height:40px;
+      bottom:0;
+    }
+  </style>
+
+<head>
+  <title>QR Scanner</title>
+  <apex:stylesheet value="{!URLFOR($Resource.SLDS102, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+</head>    
+
+<body>    
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds">    
+
+    <!-- MASTHEAD -->
+    <p class="slds-text-heading--label slds-m-bottom--small">QR Scanner</p>
+    <!-- / MASTHEAD -->    
+
+    <!-- PAGE HEADER -->
+<div class="slds-page-header" role="banner">
+
+  <!-- LAYOUT GRID -->
+  <div class="slds-grid">
+
+    <!-- GRID COL -->
+    <div class="slds-col">
+
+      <!-- HEADING AREA -->
+      <p class="slds-text-heading--label">SCANNER</p>
+      <h1 class="slds-text-heading--medium">QR Scanner</h1>
+      <!-- /HEADING AREA -->
+
+    </div>
+
+    <!-- GRID COL -->
+    <div class="slds-col slds-no-flex slds-align-middle">
+
+      <div class="slds-button-group" role="group">
+        <button class="slds-button slds-button--neutral button"  >
+          Capture QR
+        </button>
+        <button class="slds-button slds-button--neutral" id="decode" onclick="decode()">
+          Submit
+        </button>
+      </div>
+      <input id="input" type="file" onchange="previewFile()" style="display:none" />
+    </div>
+    <!-- / GRID COL -->
+
+  </div>
+  <!-- / LAYOUT GRID -->
+
+  <p class="slds-text-body--small slds-m-top--x-small">RECEIVED items</p>
+
+</div>
+<!-- / PAGE HEADER -->   
+
+    <!-- PRIMARY CONTENT WRAPPER -->
+    <div class="myapp">
+      <form>
+        
+        <input type="file" class="button" onchange="previewFile()" /><br/>
+        <i class="">If the image looks clear, click submit. If not, re-capture the QR code.</i>
+        <div style="text-align:center;display:none;" class="returned">
+          <ul>
+            <li id="returnedName">
+              
+            </li>
+            <li id="returnedPhone">
+              
+            </li>
+            <li id="returnedType">
+              
+            </li>
+            <li id="returnedEmp">
+              
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <div style="height:200px !important;text-align:center !important;">
+          <img src="" id="preview" height="200" alt="Image preview..." />
+        </div>  
+      </form>
+      <!--<div class="itemwrap">
+        <button class="slds-button--large submit" style="width:100% !important" id="decode" onclick="decode()">Submit</button>
+      </div>-->
+    </div>
+  </div>
+  
+    <!-- / PRIMARY CONTENT WRAPPER -->    
+
+    <!-- FOOTER -->
+    <!-- / FOOTER -->    
+
+  
+  <!-- / REQUIRED SLDS WRAPPER -->    
+
+</body>    
+  
+  <script>
+  $(".button").click(function(){
+    $("#input").click();
+  });
+  
+  function read(a) {
+    $(".returned").hide();
+    if( (typeof sforce != 'undefined') && (sforce != null) ) {
+      /*sforce.one.navigateToSObject(a);*/
+      Visualforce.remoting.timeout = 120000; // Set timeout at page level
+      
+      getRemoteAccount(a);
+      
+    }
+    else {
+      /*window.location="/" + a;*/
+      getRemoteAccount(a);   
+    }
+  }
+  
+  function getRemoteAccount(a) {
+    
+    var accountId = a;
+    console.log("hello accountId " + accountId);
+    // This remoting call will use the page's timeout value
+    Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.AccountRemoter.getAccount}',
+        accountId, 
+        handleResult
+    );
+  }
+  
+  $(document).ready(function() {
+    $(".returned").hide();
+    qrcode.callback = read;
+  });
+  
+  function previewFile() {
+    var preview = document.querySelector('#preview');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+  
+    reader.onloadend = function () {
+      preview.src = reader.result;
+    }
+    
+    console.log("hello previewFile " + file);
+    
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      preview.src = "";
+    }
+    
+    console.log("hello previewFile " + file);
+  }
+
+  function decode() {
+    try{
+      var preview = document.querySelector('#preview');
+      qrcode.decode(preview.src);
+      
+      console.log("hello " + preview.src);
+      
+      
+    }
+    catch (e)
+    {
+      alert('Error - ' + e);
+    }
+  }
+  
+  function handleResult(result, event) {
+    
+    console.log("hello in handleResult " + result.Name);
+    $(".returned").show();
+    $("#returnedName").text(result.Name);
+    $("#returnedPhone").text(result.Phone);
+    $("#returnedType").text(result.Type);
+    $("#returnedEmp").text(result.NumberOfEmployees);
+  }
+
+</script>
+
+<!--<c:foundationFooter />-->
+</html>
+</apex:page>
