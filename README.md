@@ -1,14 +1,11 @@
-# QR Scan with SF's Design System
+# Timer for projects, for use in a personal SalesForce dev org
 
-Scan QR code from SF Account ID and SOQL query account where ID = decoded barcode using JavaScript remoting
-and SF's Design System UI.
+![alt tag](http://imgur.com/pE3TD8v)
 
-Please contact [Jamie](mailto:jamie.smith@coastalcloud.us) with feedback / Q's.
+[Un-managed Package 1-click Install Link](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t61000000gUBz)
 
-#### Things needed
+#### Other Things
 
-I'll push static resources needed which has Design System @ v1.0.2. You can find [Design System](https://www.lightningdesignsystem.com/resources/downloads/)
-by following that link and you can choose to use their unmanaged package or npm, etc. You'll just need to update the static resource
-reference in the page (hopefully).
+Please contact [Jamie](mailto:i@jamiesmiths.com) with feedback / Q's.
 
-GLHF#hourglass
+###GLHF
