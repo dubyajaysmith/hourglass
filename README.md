@@ -11,4 +11,4 @@ I'll push static resources needed which has Design System @ v1.0.2. You can find
 by following that link and you can choose to use their unmanaged package or npm, etc. You'll just need to update the static resource
 reference in the page (hopefully).
 
-GLHF
+GLHF#hourglass
