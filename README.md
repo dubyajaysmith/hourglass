@@ -1,5 +1,4 @@
-# Timer for projects 
-##(for use in a SalesForce dev org)
+# Timer for projects - ####(for use in a SalesForce dev org)
 
 ![Image of app](http://i.imgur.com/pE3TD8v.png)
 
