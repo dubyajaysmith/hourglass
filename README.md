@@ -1,4 +1,5 @@
-# Timer for projects, for use in a personal SalesForce dev org
+# Timer for projects 
+##(for use in a SalesForce dev org)
 
 ![Image of app](http://i.imgur.com/pE3TD8v.png)
 
@@ -8,4 +9,4 @@
 
 Please contact [Jamie](mailto:i@jamiesmiths.com) with feedback / Q's.
 
-###GLHF
+####Is under [WTFPL](http://www.wtfpl.net/txt/copying/) so GLHF all ;-)
