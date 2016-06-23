@@ -53,8 +53,7 @@
                             <div class="card-content black-text">
                                 <span class="card-title padB25">Hi {!$User.FirstName}!</span>
                                 <br />
-
-                                <!--<apex:inputField id="name" style="display:inline" value="{!project.Project_Name__c}" />-->
+                                
                                 <label>Select Project</label>
                                 <span class="name hide">{!pros}</span>
                                 <div class="" style="">
@@ -62,10 +61,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="card-action" style="min-height:90px;">
+                            <div class="card-action" style="min-height:90px;text-align:center;">
                                     <span class="time" style="font-size:2rem;"></span>
-                                    &nbsp; &nbsp; &nbsp;
-                                <div style="float:right;">
+                                    <br />
+                                <div style="">
                                     <a class="waves-effect waves-light btn-large matchWidth start" href="#">Start</a> &nbsp;
                                     <a class="waves-effect waves-light btn-large matchWidth stop" style="display:none" href="#">Stop</a>
                                 </div>
@@ -124,8 +123,9 @@
                             </div>
 
                             <div id="delProjects" class="projToToggle" style="display:none">
-                                <h3 style="font-weight:300;font-size:1.2rem;">Delete Old Projects</h3>
-                                <label>Long press (or click) to remove</label>
+                                <h3 style="font-weight:300;font-size:1.5rem;">Delete Old Projects</h3>
+                                <i>Long press (or long click) to remove</i>
+                                <hr />
                                 <ul class="toDelFrom" style="font-size:1.5rem;">
                                 </ul>
                             </div>

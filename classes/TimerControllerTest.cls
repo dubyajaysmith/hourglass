@@ -4,16 +4,7 @@ public class TimerControllerTest {
     @testSetup 
     static void setupTestData() {
         
-        //Date todayDate = Date.today();
-        //Date plusYearDate = Date.today().addYears(1);//system.today().year() + 1;
-        
-        //Profile p = [SELECT Id FROM Profile WHERE Name = 'Partner Portal Profile' LIMIT 1];
-        
-        //Create portal account owner
-        //UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
         Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
-        //RecordType recordType = [select id from recordtype where name = 'Other Species Contacts'];
-        //RecordType recordTypeInc = [select id, name from recordtype where name = 'Other Species Incidents'];
         
         User portalAccountOwner1 = new User(
             //UserRoleId = portalRole.Id,
@@ -29,9 +20,7 @@ public class TimerControllerTest {
             TimeZoneSidKey='America/Chicago'
         );
         
-        Test.StartTest();
         Database.insert(portalAccountOwner1);
-        Test.StopTest();
         
         //Create account
         system.runas(portalAccountOwner1){

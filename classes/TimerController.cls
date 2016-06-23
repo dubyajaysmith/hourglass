@@ -42,12 +42,8 @@ global with sharing class TimerController {
         projectToInsert.Time_in_Seconds__c = timed;
         
         system.debug(timed);
-        //try{
-            insert projectToInsert;
-            //pushTime = 'pushedTime ' + timed;
-        /*}catch(Exception e){
-            pushTime = 'Houston we have a problem... ' + e;
-        }*/
+        
+        insert projectToInsert;
         
         Project__c projectInserted = [select id, name, Name__c, Day_of_Week__c, Time__c From Project__c where id = :projectToInsert.id];
         result = 'Saved ' + projectInserted.Time__c + ' to your ' + projectInserted.Name__c + ' project.';
